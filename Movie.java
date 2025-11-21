@@ -40,6 +40,7 @@ public class Movie {
         return _price.getCharge(daysRented);
     }
 
+    // Agora Movie só chama o método movido para Price
     public int getFrequentRenterPoints(int daysRented) {
         return _price.getFrequentRenterPoints(daysRented);
     }
