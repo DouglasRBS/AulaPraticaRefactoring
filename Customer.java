@@ -19,51 +19,41 @@ public class Customer {
     }
 
     public String statement() {
-
         Enumeration rentals = _rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
 
-            // show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(each.getCharge()) + "\n";
+                    each.getCharge() + "\n";
         }
 
-        // add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) +
+        result += "Amount owed is " + getTotalCharge() + "\n";
+        result += "You earned " + getTotalFrequentRenterPoints() +
                 " frequent renter points";
 
         return result;
     }
 
-    // ---------------- NOVA FEATURE ----------------
-    // imprime o comprovante em HTML
     public String htmlStatement() {
         Enumeration rentals = _rentals.elements();
         String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-
-            // show figures for each rental
             result += each.getMovie().getTitle() + ": " +
-                    String.valueOf(each.getCharge()) + "<BR>\n";
+                    each.getCharge() + "<BR>\n";
         }
 
-        // add footer lines
-        result += "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
+        result += "<P>You owe <EM>" + getTotalCharge() + "</EM><P>\n";
         result += "On this rental you earned <EM>" +
-                String.valueOf(getTotalFrequentRenterPoints()) +
+                getTotalFrequentRenterPoints() +
                 "</EM> frequent renter points<P>";
 
         return result;
     }
-    // ---------------- FIM DA NOVA FEATURE ----------------
 
-    // calcula o total das cobranças
     private double getTotalCharge() {
         double result = 0;
         Enumeration rentals = _rentals.elements();
@@ -74,7 +64,6 @@ public class Customer {
         return result;
     }
 
-    // calcula o total dos pontos de aluguel frequente
     private int getTotalFrequentRenterPoints() {
         int result = 0;
         Enumeration rentals = _rentals.elements();

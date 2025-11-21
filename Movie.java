@@ -1,13 +1,10 @@
 public class Movie {
 
-    // constantes ainda usadas pelas subclasses de Price
     public static final int CHILDRENS = 2;
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
 
     private String _title;
-
-    // passo 3: substituir o priceCode por um Price
     private Price _price;
 
     public Movie(String title, int priceCode) {
@@ -39,21 +36,11 @@ public class Movie {
         return _title;
     }
 
-    // método agora apenas delega para Price
     public double getCharge(int daysRented) {
-    System.out.println("Price.getCharge chamado");
-    return 0;
-}
+        return _price.getCharge(daysRented);
+    }
 
-
-    // método extraído e movido para cá no Passo 2
     public int getFrequentRenterPoints(int daysRented) {
-
-        // regra: NEW_RELEASE com mais de 1 dia rende 2 pontos
-        if ((this.getPriceCode() == Movie.NEW_RELEASE) &&
-            daysRented > 1)
-            return 2;
-
-        return 1;
+        return _price.getFrequentRenterPoints(daysRented);
     }
 }

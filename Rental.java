@@ -16,12 +16,10 @@ public class Rental {
         return _movie;
     }
 
-    // método getCharge() agora delega o cálculo para Movie
     public double getCharge() {
         return _movie.getCharge(_daysRented);
     }
 
-    // método agora delega para Movie
     public int getFrequentRenterPoints() {
         return _movie.getFrequentRenterPoints(_daysRented);
     }
