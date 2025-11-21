@@ -7,7 +7,7 @@ public class Movie {
 
     private String _title;
 
-    // *** passo 3: substituir o priceCode por um Price ***
+    // passo 3: substituir o priceCode por um Price
     private Price _price;
 
     public Movie(String title, int priceCode) {
@@ -39,31 +39,12 @@ public class Movie {
         return _title;
     }
 
-    // método extraído da classe Rental
+    // método agora apenas delega para Price
     public double getCharge(int daysRented) {
+    System.out.println("Price.getCharge chamado");
+    return 0;
+}
 
-        double thisAmount = 0;
-
-        switch (getPriceCode()) {
-            case REGULAR:
-                thisAmount += 2;
-                if (daysRented > 2)
-                    thisAmount += (daysRented - 2) * 1.5;
-                break;
-
-            case NEW_RELEASE:
-                thisAmount += daysRented * 3;
-                break;
-
-            case CHILDRENS:
-                thisAmount += 1.5;
-                if (daysRented > 3)
-                    thisAmount += (daysRented - 3) * 1.5;
-                break;
-        }
-
-        return thisAmount;
-    }
 
     // método extraído e movido para cá no Passo 2
     public int getFrequentRenterPoints(int daysRented) {
