@@ -49,4 +49,15 @@ public class Movie {
 
         return thisAmount;
     }
+
+    // método extraído e movido para cá no Passo 2
+    public int getFrequentRenterPoints(int daysRented) {
+
+        // regra: NEW_RELEASE com mais de 1 dia rende 2 pontos
+        if ((this.getPriceCode() == Movie.NEW_RELEASE) &&
+            daysRented > 1)
+            return 2;
+
+        return 1;
+    }
 }

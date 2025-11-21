@@ -21,13 +21,8 @@ public class Rental {
         return _movie.getCharge(_daysRented);
     }
 
-    // método extraído do Customer e movido para cá
+    // método agora delega para Movie
     public int getFrequentRenterPoints() {
-        // add frequent renter points
-        if ((this.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-            this.getDaysRented() > 1)
-            return 2;  // bônus
-
-        return 1;      // padrão
+        return _movie.getFrequentRenterPoints(_daysRented);
     }
 }
